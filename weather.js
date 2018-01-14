@@ -4,9 +4,13 @@ const URL = 'http://api.openweathermap.org/data/2.5/weather?appid=01cc3765573683
 
 function getTemp(cityName, fun) {
     request(URL + cityName, (err, res, body) => {
-        if (err) return fun(err);
+        if (err) return fun(err, null);
         const result = JSON.parse(body)
-        return fun(result.main.temp)
+        if (!result.main)
+            return fun(new Error('Khong tim thay thanh pho'), null)
+        return fun(null, result.main.temp)
     })
 }
-getTemp("hanoi", console.log)
+getTemp("haccnoi", (err, temp) => {
+    console.log(err ? err.message : temp)
+})
