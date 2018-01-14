@@ -19,6 +19,17 @@ async function dientichHT(a, b, h) {
     const kq = await tinh("CHIA", tich, 2)
     return kq;
 }
+
+//(2+3)*5/2
+
 dientichHT(2, 3, 5)
-    .then(r => console.log(r))
+    .then(r => console.log(Date.now() + `... ${r}`))
     .catch(err => console.log(err.message))
+
+
+//C3
+//thuc hien cong va chia, sau do nhan
+Promise.all([tinh("CONG", 2, 3), tinh("CHIA", 5, 2)]) // [ '5', '2.5' ]
+    .then(arr => tinh('NHAN', arr[0], arr[1]))
+    .then(r => console.log(Date.now() + `___${r}`))
+    .catch(err => console.log(err))
