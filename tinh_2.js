@@ -18,7 +18,7 @@ tinh("CONG", 3, 2)
             .then(r => console.log(`Ket qua la ${r}`))
             .catch(err => console.log(err.message))))
 
-
+//C1
 function dientichHT(a, b, h) {
     return tinh("CONG", a, b)
         .then(tong => tinh("NHAN", tong, h)
